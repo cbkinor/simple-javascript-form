@@ -1,0 +1,44 @@
+.header {
+  font-weight: bold;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+}
+
+.text {
+  text-align: justify;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.sub-header {
+  color: grey;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  padding-right: 20px;
+  padding-bottom: 5px;
+}
+
+ul {
+  list-style-position: inside;
+}
+
+li:nth-child(2) {
+  color: blue;
+}
+
+.col-sm-10 {
+  max-width: 500px;
+}
+
+.subscribe {
+  padding-left: 17%;
+  padding-bottom: 15px;
+  font-weight: bolder;
+  color: darkblue;
+}
