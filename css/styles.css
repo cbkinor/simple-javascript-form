@@ -42,3 +42,14 @@ li:nth-child(2) {
   font-weight: bolder;
   color: darkblue;
 }
+
+.require {
+  color: red;
+  text-align: right;
+}
+
+.required label:before {
+    color: #e32;
+    content: '* ';
+    display:inline;
+}

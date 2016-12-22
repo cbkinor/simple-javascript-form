@@ -1,7 +1,7 @@
 $("#country").on("change", function() {
     if ($(this).val() === "canada") {
-        $("#subscribe").attr("disabled", "disabled");
+        $(".enable").attr("disabled", "disabled");
     } else {
-        $("#subscribe").removeAttr("disabled");
+        $(".enable").removeAttr("disabled");
     }
 });
