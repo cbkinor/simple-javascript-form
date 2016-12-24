@@ -87,7 +87,6 @@
               <option value="FR">France</option>
               <option value="MX">Mexico</option>
               <option value="US">United States</option>
-
             </select>
           </div>
         </div>
@@ -95,14 +94,15 @@
           <label for="state" class="col-sm-2 control-label">State / Providence:</label>
           <div class="col-sm-4">
             <select id="state" name="state" class="form-control">
-              <option value="" disabled selected hidden>Please Select a State</option>
+              <option value="" disabled selected>Please Select a State</option>
             </select>
           </div>
         </div>
-        <div class="form-group zip required">
-          <label for="zip" class="col-sm-2 control-label">Zip / Postal Code:</label>
+
+        <div class="form-group zip" name="zip">
+          <label for="zip" name="zip" class="col-sm-2 control-label">Zip / Postal Code:</label>
           <div class="col-sm-4">
-            <input type="text" class="form-control" id="zip">
+            <input type="text" name="zip" class="form-control" id="zip">
           </div>
         </div>
         <div class="form-group email required">
@@ -125,7 +125,6 @@
         </div>
       </form>
       <script type="text/javascript" src="js/fmg.js"></script>
-      <!-- <script language="javascript">print_country("country");</script> -->
     </div>
     <hr />
   </body>
