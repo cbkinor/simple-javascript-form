@@ -81,13 +81,22 @@
         <div class="form-group country required">
         <label for="country" class="col-sm-2 control-label">Country:</label>
           <div class="col-sm-4">
-            <select id="country" onchange="print_state('state',this.selectedIndex);" id="country" name="country "class="form-control"></select>
+            <select id="country" name="country" onchange="stateList('state',this.selectedIndex);"  class="form-control">
+              <option>Please Select a Country</option>
+              <option value="CA">Canada</option>
+              <option value="FR">France</option>
+              <option value="MX">Mexico</option>
+              <option value="US">United States</option>
+
+            </select>
           </div>
         </div>
         <div class="form-group state required">
           <label for="state" class="col-sm-2 control-label">State / Providence:</label>
           <div class="col-sm-4">
-            <select id="state" name="state" class="form-control"></select>
+            <select id="state" name="state" class="form-control">
+              <option value="" disabled selected hidden>Please Select a State</option>
+            </select>
           </div>
         </div>
         <div class="form-group zip required">
@@ -116,7 +125,7 @@
         </div>
       </form>
       <script type="text/javascript" src="js/fmg.js"></script>
-      <script language="javascript">print_country("country");</script>
+      <!-- <script language="javascript">print_country("country");</script> -->
     </div>
     <hr />
   </body>
