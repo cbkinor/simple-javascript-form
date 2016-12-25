@@ -28,32 +28,49 @@ $('#country').on('change', function() {
     $('div[name=zip]').toggleClass('required',isRequired);
 });
 
-function validation(value){
-    return (value.length) ? true : false;
-    // same as if (value.length) {return true;} else {return false;}
+// Validate email
+function validateEmail(email) {
+  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
 }
 
-// Detecting the event for any field of class field
-$(".required").keyup(function() {
+function validate() {
+  $("#result").text("");
+  var email = $("#email").val();
+  if (validateEmail(email)) {
+    $("#result").text("");
+  } else {
+    $("#result").text(email + " is not a valid address").css("color", "red");
+  }
+  return false;
+}
 
-    // checking each item
-    $(".required").each(function(index, item){
+$("#btn").bind("click", validate);
 
-        if(!validation($(item).val())){
-            $("#btn").prop("disabled", false);
-            return false; // break the loop. there is a validation error
-        }
+// Validate required fields
+// function validation(value){
+//     return (value.length) ? true : false;
+//     // same as if (value.length) {return true;} else {return false;}
+// }
+//
+// // Detecting the event for any field of class field
+// $(".required").keyup(function() {
+//
+//     // checking each item
+//     $(".required").each(function(index, item){
+//
+//         if(!validation($(item).val())){
+//             $("#btn").prop("disabled", true);
+//             return false; // break the loop. there is a validation error
+//         }
+//
+//         // if is the last item and there aren't validation errors
+//         if ($(item).attr('id') == $(".required").last().attr('id'))
+//             $("#btn").prop("disabled", false);
+//     });
+// })
 
-        // if is the last item and there aren't validation errors
-        if ($(item).attr('id') == $(".required").last().attr('id'))
-            $("#btn").prop("disabled", true);
-    });
-})
 
-// $('#country').change(function () {
-//     var isRequired = /CA|US/i.test(this.value);
-//     $('div[name=zip]').toggleClass('required',isRequired);
-// });
 
 // $('form').submit(function(){
 //     // get all empty required fields
