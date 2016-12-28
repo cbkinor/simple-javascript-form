@@ -51,19 +51,19 @@
         <div class="form-group fname required">
           <label for="fname" class="col-sm-2 control-label">First Name:</label>
           <div class="col-sm-4">
-            <input type="text" class="form-control" id="firstName">
+            <input type="text" class="form-control disableBtn" id="first">
           </div>
         </div>
         <div class="form-group lname required">
           <label for="lname" class="col-sm-2 control-label">Last Name:</label>
           <div class="col-sm-4">
-            <input type="text" class="form-control" id="inputPassword3">
+            <input type="text" class="form-control disableBtn" id="last">
           </div>
         </div>
         <div class="form-group street required">
           <label for="street" class="col-sm-2 control-label">Street:</label>
           <div class="col-sm-4">
-            <input type="text" class="form-control" id="street">
+            <input type="text" class="form-control disableBtn" id="street">
           </div>
         </div>
         <div class="form-group apt">
@@ -75,13 +75,13 @@
         <div class="form-group city required">
           <label for="city" class="col-sm-2 control-label">City:</label>
           <div class="col-sm-4">
-            <input type="text" class="form-control" id="city">
+            <input type="text" class="form-control disableBtn" id="city">
           </div>
         </div>
         <div class="form-group country required">
         <label for="country" class="col-sm-2 control-label">Country:</label>
           <div class="col-sm-4">
-            <select id="country" name="country" onchange="stateList('state',this.selectedIndex);"  class="form-control">
+            <select id="country" name="country" onchange="stateList('state',this.selectedIndex);"  class="form-control disableBtn">
               <option>Please Select a Country</option>
               <option value="CA">Canada</option>
               <option value="FR">France</option>
@@ -93,7 +93,7 @@
         <div class="form-group state required">
           <label for="state" class="col-sm-2 control-label">State / Providence:</label>
           <div class="col-sm-4">
-            <select id="state" name="state" class="form-control">
+            <select id="state" name="state" class="form-control disableBtn">
               <option value="" disabled selected>Please Select a State</option>
             </select>
           </div>
@@ -102,13 +102,13 @@
         <div class="form-group zip" name="zip">
           <label for="zip" name="zip" class="col-sm-2 control-label">Zip / Postal Code:</label>
           <div class="col-sm-4">
-            <input type="text" name="zip" class="form-control" id="zip">
+            <input type="text" name="zip" class="form-control disableBtn" id="zip">
           </div>
         </div>
         <div class="form-group email required">
           <label for="email" class="col-sm-2 control-label">Email:</label>
           <div class="col-sm-4">
-            <input type="email" class="form-control" id="email">
+            <input type="email" class="form-control disableBtn" id="email">
           </div>
           <h6 id='result' class="result"></h6>
         </div>
@@ -121,7 +121,8 @@
 
         <div class="form-group send">
           <div class="col-sm-offset-2 col-xs-4">
-            <button type="submit" id="btn" class="btn btn-default">Send Request</button>
+            <button type="submit" id="btn" class="btn btn-default" disabled="disabled">Send Request</button>
+          </div>
           </div>
         </div>
       </form>

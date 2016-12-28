@@ -26,6 +26,7 @@ $('#country').on('change', function() {
     }
     var isRequired = /CA|US/i.test(this.value);
     $('div[name=zip]').toggleClass('required',isRequired);
+    $('input[name=zip]').toggleClass('disableBtn', isRequired);
 });
 
 // Validate email
@@ -46,3 +47,19 @@ function validate() {
 }
 
 $("#btn").bind("click", validate);
+
+// Disable "Send Request" btn until all fields filled
+$('.disableBtn').on('keyup change', function(){
+  var empty = false;
+  $('.disableBtn').each(function() {
+      if ($(this).val() == '') {
+          empty = true;
+      }
+  });
+
+  if (empty) {
+      $('#btn').prop('disabled', true);
+  } else {
+      $('#btn').prop('disabled', false);
+  }
+});
