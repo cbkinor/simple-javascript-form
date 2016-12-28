@@ -24,6 +24,7 @@ $('#country').on('change', function() {
     } else {
         $('.enable').removeAttr('disabled');
     }
+    // Require zip if US or Canada is selected country
     var isRequired = /CA|US/i.test(this.value);
     $('div[name=zip]').toggleClass('required',isRequired);
     $('input[name=zip]').toggleClass('disableBtn', isRequired);
@@ -31,8 +32,16 @@ $('#country').on('change', function() {
 
 // Validate email
 function validateEmail(email) {
-  var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return re.test(email);
+  var validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return validEmail.test(email);
+}
+
+function validateZip(zip) {
+      var isValid = /^[0-9]{5}(?:-[0-9]{4})?$/.test(zip);
+      if (!isValid){
+        alert('Invalid ZipCode');
+    document.getElementById("zip").value = "";
+  }
 }
 
 function validate() {
