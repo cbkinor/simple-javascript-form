@@ -37,8 +37,6 @@ li:nth-child(2) {
 }
 
 .subscribe, .result {
-  padding-left: 17%;
-  padding-bottom: 15px;
   font-weight: bolder;
   color: darkblue;
 }
@@ -48,8 +46,47 @@ li:nth-child(2) {
   text-align: right;
 }
 
-.required label:before {
+/*.required label:before {
     color: #e32;
     content: '* ';
     display:inline;
+}*/
+
+/* JSFormValidation.css */
+.required {  /* Marker for required fields */
+   color: red;
+}
+
+.errorMsg {  /* for error messages */
+   color: red;
+}
+
+.errorBox {  /* for the error input text fields */
+   border: 2px solid red;
+}
+
+.table {
+   border: 0;
+   width: 100%;
+}
+
+.table-borderless tbody tr td {
+    border: none;
+}
+
+td {
+   margin: 0;
+   padding: 3px 10px;
+}
+
+label {
+  font-weight: normal;
+}
+
+/*.col1 * {
+  width: 100%;
+}*/
+
+.col2 * {
+  width: 100%;
 }
