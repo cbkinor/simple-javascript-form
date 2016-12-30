@@ -27,20 +27,17 @@ function init() {
  * @param theForm: the form to be validated
  */
 function validateForm(theForm) {
-   with(theForm) {
-      // return false would prevent default submission
-      return (isNotEmpty(txtName, "Please enter your name!", elmNameError)
-           && isNumeric(txtZipcode, "Please enter a 5-digit zip code!", elmZipcodeError)
-           && isLengthMinMax(txtZipcode, 5, 5, "Please enter a 5-digit zip code!", elmZipcodeError)
-           && isSelected(selCountry, "Please make a selection!", elmCountryError)
-           && isChecked("gender", "Please check a gender!", elmGenderError)
-           && isChecked("color", "Please check a color!", elmColorError)
-           && isNumeric(txtPhone, "Please enter a valid phone number!", elmPhoneError)
-           && isValidEmail(txtEmail, "Enter a valid email!", elmEmailError)
-           && isValidPassword(txtPassword, "Password shall be 6-8 characters!", elmPasswordError)
-           && verifyPassword(txtPassword, txtPWVerified, "Different from new password!",
-                 elmPWVerifiedError)
-      );
+  with(theForm) {
+    // return false would prevent default submission
+    return (isAlphabetic(firstName, "Please enter your first name!",    elmNameError)
+      && isAlphabetic(lastName, "Please enter your last name!", elmNameError)
+      && isAlphabetic(street, "Please enter your street address!", elmNameError)
+      && isAlphabetic(city, "Please enter your city!", elmNameError)
+      && isSelected(country, "Please select your country!", elmCountryError)
+      && isSelected(state, "Please select your state / providence!", elmNameError)
+      && isValidZip(zipcode, "Please enter a valid zip code!", elmZipcodeError)
+      && isValidEmail(txtEmail, "Enter a valid email!", elmEmailError)
+    );
    }
 }
 
@@ -123,10 +120,17 @@ function isLengthMinMax(inputElm, minLength, maxLength, errMsg, errElm) {
    return isValid;
 }
 
+function isValidZip(inputElm, errMsg, errElm) {
+   var isValid = (inputElm.value.trim().match(
+         /^[0-9]{5}(?:-[0-9]{4})?$/) !== null);
+   postValidate(isValid, errMsg, errElm, inputElm);
+   return isValid;
+}
+
 // Validate that input value is a valid email address
 function isValidEmail(inputElm, errMsg, errElm) {
    var isValid = (inputElm.value.trim().match(
-         /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) !== null);
+         /^[^\s@]+@[^\s@]+\.[^\s@]+$/) !== null);
    postValidate(isValid, errMsg, errElm, inputElm);
    return isValid;
 }

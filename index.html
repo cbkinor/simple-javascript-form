@@ -45,73 +45,63 @@
       <div class="row text">
         <h2>Please fill out our request form below</h2>
 
-        <form id="formTest" class="form-horizontal col-sx-6" method="get" action="processData">
-          <!-- <div class="form-group">
-            <p class="col-sm-6 require">*Required</p>
-          </div> -->
-          <table class="table  table-borderless">
-          <tr>
-            <td></td>
-            <td align="right"><span class="require">*Required</span></td>
-            <td width="60%"></td>
-          </tr>
-          <tr>
-            <td class="col1"><label for="txtName"><span class="required">* </span>First Name:</label></td>
-            <td class="col2"><input type="text" id="txtName" name="name"></td>
-            <td id="elmNameError" class="errorMsg">&nbsp;</td>
-          </tr>
-          <tr>
-            <td class="col1"><label for="txtName"><span class="required">* </span>Last Name:</label></td>
-            <td class="col2"><input type="text" id="txtName" name="name"></td>
-            <td id="elmNameError" class="errorMsg">&nbsp;</td></tr>
-          <tr>
-            <td class="col1"><label for="txtAddress"><span class="required">* </span>Street:</label></td>
-            <td class="col2"><input type="text" id="txtAddress" name="address"></td>
-            <td id="elmAddressError" class="errorMsg">&nbsp;</td></tr>
-          <tr>
-            <td class="col1"><label for="txtAddress">Appartment / Suite #:</label></td>
-            <td class="col2"><input type="text" id="txtAddress" name="address"></td>
-            <td id="elmAddressError" class="errorMsg">&nbsp;</td></tr>
-          <tr>
-            <td class="col1"><label for="txtAddress"><span class="required">* </span>City:</label></td>
-            <td class="col2"><input type="text" id="txtAddress" name="address"></td>
-            <td id="elmAddressError" class="errorMsg">&nbsp;</td></tr>
-          <tr>
-            <td class="col1"><label for="txtName"><span class="required">* </span>Country:</label></td>
-            <td class="col2"><select id="selCountry" name="country">
-              <option>Please Select a Country</option>
-              <option value="CA">Canada</option>
-              <option value="FR">France</option>
-              <option value="MX">Mexico</option>
-              <option value="US">United States</option>
-                </select></td>
-            <td id="elmCountryError" class="errorMsg">&nbsp;</td></tr>
-          <tr>
-            <td class="col1"><label for="txtName"><span class="required">* </span>State / Providence:</label></td>
-            <td class="col2"><select id="selCountry" name="country">
-              <option value="" disabled selected>Please Select a State</option>
-                </select></td>
-            <td id="elmCountryError" class="errorMsg">&nbsp;</td></tr>
-          <tr>
-            <td class="col1"><label for="txtZipcode"><span class="required">* </span>Zip / Postal Code:</label></td>
-            <td class="col2"><input type="text" id="txtZipcode" name="zipcode"></td>
-            <td id="elmZipcodeError" class="errorMsg">&nbsp;</td></tr>
-          <tr>
-            <td class="col1"><label for="txtEmail"><span class="required">* </span>Email:</label></td>
-            <td class="col2"><input type="text" id="txtEmail" name="email"></td>
-            <td id="elmEmailError" class="errorMsg">&nbsp;</td></tr>
-          <tr>
-            <td class="col1"></td>
-            <td><label class="subscribe">
-              <input type="checkbox" name="subscribe" class="enable" onclick="check();"> Subscribe to Email Offers
-            </label></td>
-            <td id="elmZipcodeError" class="errorMsg">&nbsp;</td></tr>
-            <td>&nbsp;</td>
-            <td><input type="submit" value="Send Request" id="btnSubmit">&nbsp;
-                <input type="reset" value="CLEAR" id="btnReset"></td>
-            <td>&nbsp;</td></tr>
-          </table>
-        </form>
+        <form id="formTest" method="get" action="processData">
+    <table>
+    <tr>
+      <td><label for="txtName">Name<span class="required">*</span></label></td>
+      <td><input type="text" id="txtName" name="name"></td>
+      <td id="elmNameError" class="errorMsg">&nbsp;</td></tr>
+    <tr>
+      <td><label for="txtAddress">Address</label></td>
+      <td><input type="text" id="txtAddress" name="address"></td>
+      <td id="elmAddressError" class="errorMsg">&nbsp;</td></tr>
+    <tr>
+      <td><label for="txtZipcode">Zip Code<span class="required">*</span></label></td>
+      <td><input type="text" id="txtZipcode" name="zipcode"></td>
+      <td id="elmZipcodeError" class="errorMsg">&nbsp;</td></tr>
+    <tr>
+      <td>Country<span class="required">*</span></td>
+      <td><select id="selCountry" name="country">
+            <option value="" selected>Please select...</option>
+            <option value="AA">AA</option>
+            <option value="BB">BB</option>
+            <option value="CC">CC</option>
+          </select></td>
+      <td id="elmCountryError" class="errorMsg">&nbsp;</td></tr>
+    <tr>
+      <td>Gender<span class="required">*</span></td>
+      <td><label><input type="radio" name="gender" value="m">Male</label>
+          <label><input type="radio" name="gender" value="f">Female</label></td>
+      <td id="elmGenderError" class="errorMsg">&nbsp;</td></tr>
+    <tr>
+      <td>Preferences<span class="required">*</span></td>
+      <td><label><input type="checkbox" name="color" value="r">Red</label>
+          <label><input type="checkbox" name="color" value="g">Green</label>
+          <label><input type="checkbox" name="color" value="b">Blue</label></td>
+      <td id="elmColorError" class="errorMsg">&nbsp;</td></tr>
+    <tr>
+      <td><label for="txtPhone">Phone<span class="required">*</span></label></td>
+      <td><input type="text" id="txtPhone" name="phone"></td>
+      <td id="elmPhoneError" class="errorMsg">&nbsp;</td></tr>
+    <tr>
+      <td><label for="txtEmail">Email<span class="required">*</span></label></td>
+      <td><input type="text" id="txtEmail" name="email"></td>
+      <td id="elmEmailError" class="errorMsg">&nbsp;</td></tr>
+    <tr>
+      <td><label for="txtPassword">Password (6-8 characters)<span class="required">*</span></label></td>
+      <td><input type="password" id="txtPassword" name="password"></td>
+      <td id="elmPasswordError" class="errorMsg">&nbsp;</td></tr>
+    <tr>
+      <td><label for="txtPWVerified">Verify Password<span class="required">*</span></label></td>
+      <td><input type="password" id="txtPWVerified" name="pwVerified"></td>
+      <td id="elmPWVerifiedError" class="errorMsg">&nbsp;</td></tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" value="SEND" id="btnSubmit">&nbsp;
+          <input type="reset" value="CLEAR" id="btnReset"></td>
+      <td>&nbsp;</td></tr>
+    </table>
+  </form>
       </div>
 
     </div>
