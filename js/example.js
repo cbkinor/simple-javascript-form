@@ -66,7 +66,7 @@ function validateForm(theForm) {
       && isAlphanumeric(city, "Please enter your city!", elmNameError)
       && isSelected(country, "Please select your country!", elmCountryError)
       && isSelected(state, "Please select your state / providence!", elmNameError)
-      && isValidZip(zipcode, "Please enter a valid zip code!", elmZipcodeError)
+      && isValidZip(zip, "Please enter a valid zip code!", elmZipcodeError)
       && isValidEmail(email, "Enter a valid email!", elmEmailError)
     );
    }

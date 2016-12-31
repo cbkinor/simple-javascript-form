@@ -50,7 +50,3 @@ li:nth-child(2) {
 .errorMsg {  /* for error messages */
    color: red;
 }
-
-.errorBox {  /* for the error input text fields */
-   border: 2px solid red;
-}

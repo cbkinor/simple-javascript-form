@@ -1,3 +1,81 @@
+window.onload = init;
+
+function init() {
+   // Bind "onsubmit" event handler to the "submit" button
+   document.getElementById("formTest").onsubmit = validateForm;
+  //  // Bind "onclick" event handler to "reset" button
+  //  document.getElementById("btnReset").onclick = clearForm;
+   // Set initial focus
+   document.getElementById("firstName").focus();
+}
+
+function validateForm(theForm) {
+  with(theForm) {
+    // return false would prevent default submission
+    return (isAlphanumeric(firstName, "Please enter your first name!",    elmFirstNameError)
+      && isAlphanumeric(lastName, "Please enter your last name!", elmLastNameError)
+      && isAlphanumeric(street, "Please enter your street address!", elmStreetError)
+      && isAlphanumeric(apt, "Please enter a valid appartment / suite #!", elmAptError)
+      && isAlphanumeric(city, "Please enter your city!", elmCityError)
+      // && isSelected(country, "Please select your country!", elmCountryError)
+      // && isSelected(state, "Please select your state / providence!", elmStateError)
+      && isValidZip(zip, "Please enter a valid zip code!", elmZipError)
+      && isValidEmail(email, "Enter a valid email!", elmEmailError)
+    );
+   }
+}
+
+function postValidate(isValid, errMsg, errElm, inputElm) {
+   if (!isValid) {
+      // Show errMsg on errElm, if provided.
+      if (errElm !== undefined && errElm !== null
+            && errMsg !== undefined && errMsg !== null) {
+         errElm.innerHTML = errMsg;
+      }
+      // Set focus on Input Element for correcting error, if provided.
+      if (inputElm !== undefined && inputElm !== null) {
+        //  inputElm.classList.add("errorBox");  // Add class for styling
+         inputElm.focus();
+      }
+   } else {
+      // Clear previous error message on errElm, if provided.
+      if (errElm !== undefined && errElm !== null) {
+         errElm.innerHTML = "";
+      }
+      // if (inputElm !== undefined && inputElm !== null) {
+      //    inputElm.classList.remove("errorBox");
+      // }
+   }
+}
+
+function isNotEmpty(inputElm, errMsg, errElm) {
+   var isValid = (inputElm.value.trim() !== "");
+   postValidate(isValid, errMsg, errElm, inputElm);
+   return isValid;
+}
+
+/* Validate that input value contains one or more digits or letters */
+function isAlphanumeric(inputElm, errMsg, errElm) {
+   var isValid = (inputElm.value.trim().match(/^[A-Za-z\d\s]+$/) !== null);
+   postValidate(isValid, errMsg, errElm, inputElm);
+   return isValid;
+}
+
+function isValidZip(inputElm, errMsg, errElm) {
+   var isValid = (inputElm.value.trim().match(
+         /^[0-9]{5}(?:-[0-9]{4})?$/) !== null);
+   postValidate(isValid, errMsg, errElm, inputElm);
+   return isValid;
+}
+
+// Validate that input value is a valid email address
+function isValidEmail(inputElm, errMsg, errElm) {
+   var isValid = (inputElm.value.trim().match(
+         /^[^\s@]+@[^\s@]+\.[^\s@]+$/) !== null);
+   postValidate(isValid, errMsg, errElm, inputElm);
+   return isValid;
+}
+
 
 // Country and State drop-down menues.
 const states = new Array();
@@ -17,6 +95,13 @@ function stateList(stateId, stateIndex) {
   }
 }
 
+
+
+
+
+
+
+
 // If Canada selected, make "Subscribe to Email Offers" unavailable.
 $('#country').on('change', function() {
     if ($(this).val() === "CA") {
@@ -29,24 +114,24 @@ $('#country').on('change', function() {
     $('input[name=zip]').toggleClass('disableBtn', isRequired);
 });
 
-// Validate email
-function validateEmail(email) {
-  var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return re.test(email);
-}
-
-function validate() {
-  $("#result").text("");
-  var email = $("#email").val();
-  if (validateEmail(email)) {
-    $("#result").text("");
-  } else {
-    $('#result').text(email + ' is not a valid address').css('color', 'red');
-  }
-  return false;
-}
-
-$("#btn").bind("click", validate);
+// // Validate email
+// function validEmail(email) {
+//   var result = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//   return result.test(email);
+// }
+//
+// function validateEmail() {
+//   $('#emailResult').text("");
+//   var email = $('#email').val();
+//   if (validEmail(email)) {
+//     $('#emailResult').text("");
+//   } else {
+//     $('#emailResult').text(email + ' is not a valid address').css('color', 'red');
+//   }
+//   return false;
+// }
+//
+// $("#btn").bind("click", validateEmail);
 
 // Disable "Send Request" btn until all fields filled
 $('.disableBtn').on('keyup change', function(){
@@ -58,8 +143,25 @@ $('.disableBtn').on('keyup change', function(){
   });
 
   if (empty) {
-      $('#btn').prop('disabled', true);
+      $('#btnSubmit').prop('disabled', true);
   } else {
-      $('#btn').prop('disabled', false);
+      $('#btnSubmit').prop('disabled', false);
   }
 });
+
+function clearForm() {
+  //  // Remove class "errorBox" from input elements
+  //  var elms = document.querySelectorAll('.errorBox');  // class
+  //  for (var i = 0; i < elms.length; i++) {
+  //     elms[i].classList.remove("errorBox");
+  //  }
+   //
+  //  // Remove previous error messages
+  //  elms = document.querySelectorAll('[id$="Error"]');  // id ends with Error
+  //  for (var i = 0; i < elms.length; i++) {
+  //     elms[i].innerHTML = "";
+  //  }
+
+   // Set initial focus
+   document.getElementById("firstName").focus();
+}
