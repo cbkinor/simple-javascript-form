@@ -13,12 +13,12 @@ function validateForm(theForm) {
     return (isAlphanumeric(firstName, "Please enter your first name!",    elmFirstNameError)
       && isAlphanumeric(lastName, "Please enter your last name!", elmLastNameError)
       && isAlphanumeric(street, "Please enter your street address!", elmStreetError)
-      && (isValidApt(apt, "Please enter a valid appartment / suite #!", elmAptError)
+      && (isEmpty(apt, "Please enter a valid appartment / suite #!", elmAptError)
       || isAlphanumeric(apt, "Please enter a valid appartment / suite #!", elmAptError))
       && isAlphanumeric(city, "Please enter your city!", elmCityError)
       // && isSelected(country, "Please select your country!", elmCountryError)
       // && isSelected(state, "Please select your state / providence!", elmStateError)
-      && isValidZip(zip, "Please enter a valid zip code!", elmZipError)
+      && isValidZip(zip, "Please enter a valid zip code!", elmZipcodeError)
       && isValidEmail(email, "Enter a valid email!", elmEmailError)
     );
    }
@@ -43,6 +43,14 @@ function postValidate(isValid, errMsg, errElm, inputElm) {
    }
 }
 
+// Validate that input value is equal to ""
+function isEmpty(inputElm, errMsg, errElm) {
+   var isValid = (inputElm.value.trim() === "");
+   postValidate(isValid, errMsg, errElm, inputElm);
+   return isValid;
+}
+
+// Validate that input value is not equal to ""
 function isNotEmpty(inputElm, errMsg, errElm) {
    var isValid = (inputElm.value.trim() !== "");
    postValidate(isValid, errMsg, errElm, inputElm);
@@ -58,23 +66,14 @@ function isAlphanumeric(inputElm, errMsg, errElm) {
 
 // Validate that input value is a valid zipcode
 function isValidZip(inputElm, errMsg, errElm) {
-   var isValid = (inputElm.value.trim().match(
-         /^[0-9]{5}(?:-[0-9]{4})?$/) !== null);
+   var isValid = (inputElm.value.trim().match(/^[0-9]{5}(?:-[0-9]{4})?$/) !== null);
    postValidate(isValid, errMsg, errElm, inputElm);
    return isValid;
 }
 
 // Validate that input value is a valid email address
 function isValidEmail(inputElm, errMsg, errElm) {
-   var isValid = (inputElm.value.trim().match(
-         /^[^\s@]+@[^\s@]+\.[^\s@]+$/) !== null);
-   postValidate(isValid, errMsg, errElm, inputElm);
-   return isValid;
-}
-
-// Validate that input value is a valid apt / suite #
-function isValidApt(inputElm, errMsg, errElm) {
-   var isValid = (inputElm.value.trim() === "");
+   var isValid = (inputElm.value.trim().match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/) !== null);
    postValidate(isValid, errMsg, errElm, inputElm);
    return isValid;
 }
@@ -98,35 +97,16 @@ function stateList(stateId, stateIndex) {
 }
 
 // If Canada selected, make "Subscribe to Email Offers" unavailable.
-$('#country').on('change', function() {
-    if ($(this).val() === "CA") {
-        $('.enable').attr('disabled', 'disabled');
-    } else {
-        $('.enable').removeAttr('disabled');
-    }
-    var isRequired = /CA|US/i.test(this.value);
-    $('div[name=zip]').toggleClass('required',isRequired);
-    $('input[name=zip]').toggleClass('disableBtn', isRequired);
-});
-
-// // Validate email
-// function validEmail(email) {
-//   var result = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-//   return result.test(email);
-// }
-//
-// function validateEmail() {
-//   $('#emailResult').text("");
-//   var email = $('#email').val();
-//   if (validEmail(email)) {
-//     $('#emailResult').text("");
-//   } else {
-//     $('#emailResult').text(email + ' is not a valid address').css('color', 'red');
-//   }
-//   return false;
-// }
-//
-// $("#btn").bind("click", validateEmail);
+// $('#country').on('change', function() {
+//     if ($(this).val() === "CA") {
+//         $('.enable').attr('disabled', 'disabled');
+//     } else {
+//         $('.enable').removeAttr('disabled');
+//     }
+//     var isRequired = /CA|US/i.test(this.value);
+//     $('div[name=zip]').toggleClass('required',isRequired);
+//     $('input[name=zip]').toggleClass('disableBtn', isRequired);
+// });
 
 // Disable "Send Request" btn until all fields filled
 $('.disableBtn').on('keyup change', function(){
