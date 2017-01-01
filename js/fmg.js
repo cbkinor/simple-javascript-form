@@ -1,10 +1,10 @@
 window.onload = init;
 
 function init() {
-   // Bind "onsubmit" event handler to the "submit" button
-   document.getElementById("formTest").onsubmit = validateForm;
-   // Set initial focus
-   document.getElementById("firstName").focus();
+  // Bind "onsubmit" event handler to the "submit" button
+  document.getElementById("formTest").onsubmit = validateForm;
+  // Set initial focus
+  // document.getElementById("firstName").focus();
 }
 
 function validateForm(theForm) {
@@ -16,66 +16,64 @@ function validateForm(theForm) {
       && (isEmpty(apt, "Please enter a valid appartment / suite #!", elmAptError)
       || isAlphanumeric(apt, "Please enter a valid appartment / suite #!", elmAptError))
       && isAlphanumeric(city, "Please enter your city!", elmCityError)
-      // && isSelected(country, "Please select your country!", elmCountryError)
-      // && isSelected(state, "Please select your state / providence!", elmStateError)
-      && isValidZip(zip, "Please enter a valid zip code!", elmZipcodeError)
+      && (isValidZip(zip, "Please enter a valid zip code!", elmZipcodeError) || isEmpty(zip, "Please enter a valid zip code!", elmZipcodeError))
       && isValidEmail(email, "Enter a valid email!", elmEmailError)
     );
    }
 }
 
 function postValidate(isValid, errMsg, errElm, inputElm) {
-   if (!isValid) {
-      // Show errMsg on errElm, if provided.
-      if (errElm !== undefined && errElm !== null
-            && errMsg !== undefined && errMsg !== null) {
-         errElm.innerHTML = errMsg;
-      }
-      // Set focus on Input Element for correcting error, if provided.
-      if (inputElm !== undefined && inputElm !== null) {
-         inputElm.focus();
-      }
-   } else {
-      // Clear previous error message on errElm, if provided.
-      if (errElm !== undefined && errElm !== null) {
-         errElm.innerHTML = "";
-      }
-   }
+  if (!isValid) {
+    // Show errMsg on errElm, if provided.
+    if (errElm !== undefined && errElm !== null
+      && errMsg !== undefined && errMsg !== null) {
+      errElm.innerHTML = errMsg;
+    }
+    // Set focus on Input Element for correcting error, if provided.
+    if (inputElm !== undefined && inputElm !== null) {
+      inputElm.focus();
+    }
+  } else {
+    // Clear previous error message on errElm, if provided.
+    if (errElm !== undefined && errElm !== null) {
+      errElm.innerHTML = "";
+    }
+  }
 }
 
 // Validate that input value is equal to ""
 function isEmpty(inputElm, errMsg, errElm) {
-   var isValid = (inputElm.value.trim() === "");
-   postValidate(isValid, errMsg, errElm, inputElm);
-   return isValid;
+  var isValid = (inputElm.value.trim() === "");
+  postValidate(isValid, errMsg, errElm, inputElm);
+  return isValid;
 }
 
 // Validate that input value is not equal to ""
 function isNotEmpty(inputElm, errMsg, errElm) {
-   var isValid = (inputElm.value.trim() !== "");
-   postValidate(isValid, errMsg, errElm, inputElm);
-   return isValid;
+  var isValid = (inputElm.value.trim() !== "");
+  postValidate(isValid, errMsg, errElm, inputElm);
+  return isValid;
 }
 
 /* Validate that input value contains one or more digits or letters */
 function isAlphanumeric(inputElm, errMsg, errElm) {
-   var isValid = (inputElm.value.trim().match(/^[A-Za-z\d\s]+$/) !== null);
-   postValidate(isValid, errMsg, errElm, inputElm);
-   return isValid;
+  var isValid = (inputElm.value.trim().match(/^[A-Za-z\d\s]+$/) !== null);
+  postValidate(isValid, errMsg, errElm, inputElm);
+  return isValid;
 }
 
-// Validate that input value is a valid zipcode
+// Validate that input value is a valid zipcode for US or Canada
 function isValidZip(inputElm, errMsg, errElm) {
-   var isValid = (inputElm.value.trim().match(/^[0-9]{5}(?:-[0-9]{4})?$/) !== null);
-   postValidate(isValid, errMsg, errElm, inputElm);
-   return isValid;
+  var isValid = (inputElm.value.trim().match(/(^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ]( )?\d[ABCEGHJKLMNPRSTVWXYZ]\d$)|(^\d{5}(-\d{4})?$)/) !== null);
+  postValidate(isValid, errMsg, errElm, inputElm);
+  return isValid;
 }
 
 // Validate that input value is a valid email address
 function isValidEmail(inputElm, errMsg, errElm) {
-   var isValid = (inputElm.value.trim().match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/) !== null);
-   postValidate(isValid, errMsg, errElm, inputElm);
-   return isValid;
+  var isValid = (inputElm.value.trim().match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/) !== null);
+  postValidate(isValid, errMsg, errElm, inputElm);
+  return isValid;
 }
 
 // Country and State drop-down menues.
@@ -97,29 +95,30 @@ function stateList(stateId, stateIndex) {
 }
 
 // If Canada selected, make "Subscribe to Email Offers" unavailable.
-// $('#country').on('change', function() {
-//     if ($(this).val() === "CA") {
-//         $('.enable').attr('disabled', 'disabled');
-//     } else {
-//         $('.enable').removeAttr('disabled');
-//     }
-//     var isRequired = /CA|US/i.test(this.value);
-//     $('div[name=zip]').toggleClass('required',isRequired);
-//     $('input[name=zip]').toggleClass('disableBtn', isRequired);
-// });
+$('#country').on('change', function() {
+  if ($(this).val() === "CA") {
+    $('.enable').attr('disabled', 'disabled');
+  } else {
+    $('.enable').removeAttr('disabled');
+  }
+  // If Canada or US are selected make zip required
+  var isRequired = /CA|US/i.test(this.value);
+  $('div[name=zip]').toggleClass('required',isRequired);
+  $('input[name=zip]').toggleClass('disableBtn', isRequired);
+});
 
 // Disable "Send Request" btn until all fields filled
 $('.disableBtn').on('keyup change', function(){
   var empty = false;
   $('.disableBtn').each(function() {
-      if ($(this).val() == '') {
-          empty = true;
-      }
+    if ($(this).val() == '') {
+      empty = true;
+    }
   });
 
   if (empty) {
-      $('#btnSubmit').prop('disabled', true);
+    $('#btnSubmit').prop('disabled', true);
   } else {
-      $('#btnSubmit').prop('disabled', false);
+    $('#btnSubmit').prop('disabled', false);
   }
 });

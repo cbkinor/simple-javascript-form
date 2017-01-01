@@ -3,8 +3,8 @@
 }
 
 .container {
-    position: relative;
-    width: 100%;
+  position: relative;
+  width: 100%;
 }
 
 .text {
@@ -42,11 +42,11 @@ li:nth-child(2) {
 }
 
 .required label:before {
-    color: #e32;
-    content: '* ';
-    display:inline;
+  color: #e32;
+  content: '* ';
+  display:inline;
 }
 
-.errorMsg {  /* for error messages */
-   color: red;
+.errorMsg {
+  color: red;
 }
