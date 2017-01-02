@@ -40,128 +40,127 @@
         </ul>
       </div>
       <hr />
-    </div>
-    <div class="row text">
-      <h2>Please fill out our request form below</h2>
-      <br/>
-      <form id="formTest"  method="get" class="form-horizontal col-sx-6">
-        <div class="form-group requred">
-          <p class="col-sm-6 require">*Required</p>
-        </div>
+      <div class="row text">
+        <h2>Please fill out our request form below</h2>
+        <br/>
+        <form id="formTest"  method="get" class="form-horizontal col-sx-6">
+          <div class="form-group requred">
+            <p class="col-sm-6 require">*Required</p>
+          </div>
 
-        <div class="form-group firstName required">
-          <label for="firstName" class="col-sm-2">First Name:</label>
-          <div class="col-sm-4">
-            <input type="text" class="form-control disableBtn" id="firstName">
+          <div class="form-group required">
+            <label for="firstName" class="col-sm-2">First Name:</label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control disableBtn" id="firstName">
+            </div>
+            <div class="col-sm-offset-2 col-xs-6">
+              <h6 id="elmFirstNameError" class="errorMsg"></h6>
+            </div>
           </div>
-          <div class="col-sm-offset-2 col-xs-6">
-            <h6 id="elmFirstNameError" class="errorMsg"></h6>
-          </div>
-        </div>
 
-        <div class="form-group lastName required">
-          <label for="lastName" class="col-sm-2">Last Name:</label>
-          <div class="col-sm-4">
-            <input type="text" class="form-control disableBtn" id="lastName">
+          <div class="form-group required">
+            <label for="lastName" class="col-sm-2">Last Name:</label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control disableBtn" id="lastName">
+            </div>
+            <div class="col-sm-offset-2 col-xs-6">
+              <h6 id="elmLastNameError" class="errorMsg"></h6>
+            </div>
           </div>
-          <div class="col-sm-offset-2 col-xs-6">
-            <h6 id="elmLastNameError" class="errorMsg"></h6>
-          </div>
-        </div>
 
-        <div class="form-group street required">
-          <label for="street" class="col-sm-2">Street:</label>
-          <div class="col-sm-4">
-            <input type="text" class="form-control disableBtn" id="street">
+          <div class="form-group required">
+            <label for="street" class="col-sm-2">Street:</label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control disableBtn" id="street">
+            </div>
+            <div class="col-sm-offset-2 col-xs-6">
+              <h6 id="elmStreetError" class="errorMsg"></h6>
+            </div>
           </div>
-          <div class="col-sm-offset-2 col-xs-6">
-            <h6 id="elmStreetError" class="errorMsg"></h6>
-          </div>
-        </div>
 
-        <div class="form-group apt">
-          <label for="apt" class="col-sm-2">Appartment / Suite #:</label>
-          <div class="col-sm-4">
-            <input type="text" class="form-control" id="apt">
+          <div class="form-group">
+            <label for="apt" class="col-sm-2">Appartment / Suite #:</label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control" id="apt">
+            </div>
+            <div class="col-sm-offset-2 col-xs-6">
+              <h6 id="elmAptError" class="errorMsg"></h6>
+            </div>
           </div>
-          <div class="col-sm-offset-2 col-xs-6">
-            <h6 id="elmAptError" class="errorMsg"></h6>
-          </div>
-        </div>
 
-        <div class="form-group city required">
-          <label for="city" class="col-sm-2">City:</label>
-          <div class="col-sm-4">
-            <input type="text" class="form-control disableBtn" id="city">
+          <div class="form-group required">
+            <label for="city" class="col-sm-2">City:</label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control disableBtn" id="city">
+            </div>
+            <div class="col-sm-offset-2 col-xs-6">
+              <h6 id="elmCityError" class="errorMsg"></h6>
+            </div>
           </div>
-          <div class="col-sm-offset-2 col-xs-6">
-            <h6 id="elmCityError" class="errorMsg"></h6>
-          </div>
-        </div>
 
-        <div class="form-group country required">
-        <label for="country" class="col-sm-2">Country:</label>
-          <div class="col-sm-4">
-            <select id="country" name="country" onchange="stateList('state',this.selectedIndex);"  class="form-control disableBtn">
-              <option>Please Select a Country</option>
-              <option value="CA">Canada</option>
-              <option value="FR">France</option>
-              <option value="MX">Mexico</option>
-              <option value="US">United States</option>
-            </select>
+          <div class="form-group country required">
+          <label for="country" class="col-sm-2">Country:</label>
+            <div class="col-sm-4">
+              <select id="country" name="country" onchange="stateList('state',this.selectedIndex);"  class="form-control disableBtn">
+                <option>Please Select a Country</option>
+                <option value="CA">Canada</option>
+                <option value="FR">France</option>
+                <option value="MX">Mexico</option>
+                <option value="US">United States</option>
+              </select>
+            </div>
+            <div class="col-sm-offset-2 col-xs-6">
+              <h6 id="elmCountryError" class="errorMsg"></h6>
+            </div>
           </div>
-          <div class="col-sm-offset-2 col-xs-6">
-            <h6 id="elmCountryError" class="errorMsg"></h6>
-          </div>
-        </div>
 
-        <div class="form-group state required">
-          <label for="state" class="col-sm-2">State / Providence:</label>
-          <div class="col-sm-4">
-            <select id="state" name="state" class="form-control disableBtn">
-              <option value="" disabled selected>Please Select a State</option>
-            </select>
+          <div class="form-group required">
+            <label for="state" class="col-sm-2">State / Providence:</label>
+            <div class="col-sm-4">
+              <select id="state" class="form-control disableBtn">
+                <option value="" disabled selected>Please Select a State</option>
+              </select>
+            </div>
+            <div class="col-sm-offset-2 col-xs-6">
+              <h6 id="elmStateError" class="errorMsg"></h6>
+            </div>
           </div>
-          <div class="col-sm-offset-2 col-xs-6">
-            <h6 id="elmStateError" class="errorMsg"></h6>
-          </div>
-        </div>
 
-        <div class="form-group zip required" name="zip">
-          <label for="zip" name="zip" class="col-sm-2">Zip / Postal Code:</label>
-          <div class="col-sm-4">
-            <input type="text" name="zip" class="form-control disableBtn" id="zip">
+          <div class="form-group zip required" name="zip">
+            <label for="zip" name="zip" class="col-sm-2">Zip / Postal Code:</label>
+            <div class="col-sm-4">
+              <input type="text" name="zip" class="form-control disableBtn" id="zip">
+            </div>
+            <div class="col-sm-offset-2 col-xs-6">
+              <h6 id="elmZipcodeError" class="errorMsg"></h6>
+            </div>
           </div>
-          <div class="col-sm-offset-2 col-xs-6">
-            <h6 id="elmZipcodeError" class="errorMsg"></h6>
-          </div>
-        </div>
 
-        <div class="form-group email required">
-          <label for="email" class="col-sm-2">Email:</label>
-          <div class="col-sm-4">
-            <input type="email" class="form-control disableBtn" id="email">
+          <div class="form-group required">
+            <label for="email" class="col-sm-2">Email:</label>
+            <div class="col-sm-4">
+              <input type="email" class="form-control disableBtn" id="email">
+            </div>
+            <div class="col-sm-offset-2 col-xs-6">
+              <h6 id="elmEmailError" class="errorMsg"></h6>
+            </div>
           </div>
-          <div class="col-sm-offset-2 col-xs-6">
-            <h6 id="elmEmailError" class="errorMsg"></h6>
-          </div>
-        </div>
 
-        <div class="checkbox subscribe">
-          <label  class="col-sm-offset-2 col-sm-3">
-            <input type="checkbox" name="subscribe" class="enable" onclick="check();"> Subscribe to Email Offers
-          </label>
-        </div>
-        <br />
+          <div class="checkbox">
+            <label  class="col-sm-offset-2 col-sm-3">
+              <input type="checkbox" class="enable" onclick="check();"> Subscribe to Email Offers
+            </label>
+          </div>
+          <br />
 
-        <div class="form-group send">
-          <div class="col-sm-offset-2 col-xs-4">
-            <button type="submit" id="btnSubmit" class="btn btn-default" disabled="disabled">Send Request</button>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-xs-4">
+              <button type="submit" id="btnSubmit" class="btn btn-default" disabled="disabled">Send Request</button>
+            </div>
           </div>
-          </div>
-        </div>
-      </form>
-      <script type="text/javascript" src="js/fmg.js"></script>
+        </form>
+        <script type="text/javascript" src="js/fmg.js"></script>
+      </div>
     </div>
     <hr />
   </body>

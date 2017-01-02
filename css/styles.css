@@ -32,10 +32,6 @@ li:nth-child(2) {
   color: blue;
 }
 
-.col-sm-10 {
-  max-width: 500px;
-}
-
 .require {
   color: red;
   text-align: right;

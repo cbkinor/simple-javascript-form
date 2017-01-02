@@ -3,8 +3,6 @@ window.onload = init;
 function init() {
   // Bind "onsubmit" event handler to the "submit" button
   document.getElementById("formTest").onsubmit = validateForm;
-  // Set initial focus
-  // document.getElementById("firstName").focus();
 }
 
 function validateForm(theForm) {
@@ -24,12 +22,12 @@ function validateForm(theForm) {
 
 function postValidate(isValid, errMsg, errElm, inputElm) {
   if (!isValid) {
-    // Show errMsg on errElm, if provided.
+    // Show errMsg on errElm.
     if (errElm !== undefined && errElm !== null
       && errMsg !== undefined && errMsg !== null) {
       errElm.innerHTML = errMsg;
     }
-    // Set focus on Input Element for correcting error, if provided.
+    // Set focus on Input Element for correcting error.
     if (inputElm !== undefined && inputElm !== null) {
       inputElm.focus();
     }
@@ -55,7 +53,7 @@ function isNotEmpty(inputElm, errMsg, errElm) {
   return isValid;
 }
 
-/* Validate that input value contains one or more digits or letters */
+// Validate that input value contains one or more digits or letters
 function isAlphanumeric(inputElm, errMsg, errElm) {
   var isValid = (inputElm.value.trim().match(/^[A-Za-z\d\s]+$/) !== null);
   postValidate(isValid, errMsg, errElm, inputElm);
@@ -116,6 +114,7 @@ $('.disableBtn').on('keyup change', function(){
     }
   });
 
+  // Toggle the submit button 'disabled' attribute
   if (empty) {
     $('#btnSubmit').prop('disabled', true);
   } else {
